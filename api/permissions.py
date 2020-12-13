@@ -6,9 +6,9 @@ from api.models import UserRole
 class IsAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
         return (
-            request.user.is_authenticated
-            and request.user.role == UserRole.ADMIN
-            or request.user.is_superuser
+            request.user.is_authenticated and
+            request.user.role == UserRole.ADMIN or
+            request.user.is_superuser
         )
 
 
@@ -17,9 +17,9 @@ class DefaultPermissions(permissions.BasePermission):
         if request.method == 'GET':
             return True
         return (
-                request.user.is_authenticated
-                and request.user.role == UserRole.ADMIN
-                or request.user.is_superuser
+                request.user.is_authenticated and
+                request.user.role == UserRole.ADMIN or
+                request.user.is_superuser
         )
 
 
@@ -33,6 +33,7 @@ class ReviewCommentPermissions(permissions.BasePermission):
         if request.method == 'GET':
             return True
         return (
-            request.user.is_authenticated
-            and request.user.role == (UserRole.MODERATOR or UserRole.ADMIN)
-            or request.user == obj.author)
+            request.user.is_authenticated and
+            request.user.role == (UserRole.MODERATOR or UserRole.ADMIN) or
+            request.user == obj.author
+        )
