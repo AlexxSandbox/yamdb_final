@@ -16,18 +16,18 @@ services:
       - ./.env
 
   web:
-    image: alexxdockerhub/yamdb
+    image: alexxdockerhub/yamdb:latest
     container_name: APIDOCKER
     restart: always
-    ports:
-      - "8000:8000"
+    volumes:
+      - static_data:/code/static
     depends_on:
       - db
     env_file:
       - ./.env
 
   nginx:
-    image: nginx
+    build: ./nginx
     container_name: APINGINX
     restart: always
     volumes:
