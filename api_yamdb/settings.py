@@ -68,20 +68,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation'
-                '.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation'
-                '.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation'
-                '.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation'
-                '.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -109,7 +105,7 @@ REST_FRAMEWORK = {
 
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+        'PAGE_SIZE': 10
 }
 
 SIMPLE_JWT = {
@@ -125,6 +121,5 @@ PASSWORDLESS_AUTH = {
     'PASSWORDLESS_AUTH_TYPES': ['EMAIL'],
     'PASSWORDLESS_EMAIL_NOREPLY_ADDRESS': 'noreply@example.com',
     'PASSWORDLESS_AUTH_TOKEN_CREATOR': 'api.utils.get_token_for_user',
-    'PASSWORDLESS_AUTH_TOKEN_SERIALIZER': 'api.serializers'
-                                          '.JWTTokenResponseSerializer',
+    'PASSWORDLESS_AUTH_TOKEN_SERIALIZER': 'api.serializers.JWTTokenResponseSerializer',
 }

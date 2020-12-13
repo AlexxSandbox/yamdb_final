@@ -17,9 +17,9 @@ class DefaultPermissions(permissions.BasePermission):
         if request.method == 'GET':
             return True
         return (
-                request.user.is_authenticated and
-                request.user.role == UserRole.ADMIN or
-                request.user.is_superuser
+            request.user.is_authenticated and
+            request.user.role == UserRole.ADMIN or
+            request.user.is_superuser
         )
 
 

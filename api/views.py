@@ -45,8 +45,7 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class CustomViewSet(ListModelMixin, CreateModelMixin,
-                    DestroyModelMixin, GenericViewSet):
+class CustomViewSet(ListModelMixin, CreateModelMixin, DestroyModelMixin, GenericViewSet):
     pass
 
 
