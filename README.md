@@ -1,3 +1,3 @@
 # yamdb_final
 yamdb_final
-![example workflow name](https://github.com/AlexxSandbox/yamdb_final/workflows/YaMDB%20api%workflow/badge.svg)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/AlexxSandbox/yamdb_final/YaMDB%20api%20workflow)
