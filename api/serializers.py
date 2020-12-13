@@ -1,11 +1,9 @@
 from rest_framework import serializers
 from rest_framework.generics import get_object_or_404
-
 from api.models import Category, Comment, Genre, Review, Title, User
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
         fields = (
@@ -19,21 +17,18 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class GenreSerializer(serializers.ModelSerializer):
-
     class Meta:
         fields = ('name', 'slug')
         model = Genre
 
 
 class CategorySerializer(serializers.ModelSerializer):
-
     class Meta:
         fields = ('name', 'slug')
         model = Category
 
 
 class TitleGetSerializer(serializers.ModelSerializer):
-
     genre = GenreSerializer(many=True)
     category = CategorySerializer()
     rating = serializers.IntegerField()
@@ -52,7 +47,6 @@ class TitleGetSerializer(serializers.ModelSerializer):
 
 
 class TitlePostSerializer(serializers.ModelSerializer):
-
     genre = serializers.SlugRelatedField(
         slug_field='slug', many=True, queryset=Genre.objects.all())
 
@@ -98,7 +92,6 @@ class ReviewSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'You cannot write a review of the same title twice')
         return data
-
 
 
 class CommentSerializer(serializers.ModelSerializer):
