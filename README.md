@@ -1,6 +1,9 @@
 # YaMDb
 
 ![CI Status](https://github.com/AlexxSandbox/yamdb_final/workflows/YaMDB%20api%20workflow/badge.svg)
+![Top language](https://img.shields.io/github/languages/top/AlexxSandbox/yamdb_final)
+![GitHub last commit](https://img.shields.io/github/last-commit/AlexxSandbox/yamdb_final)
+![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/alexxdockerhub/yamdb_app)
 
 API service for movie reviews.
 
