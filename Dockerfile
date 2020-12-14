@@ -1,9 +1,11 @@
-FROM python:3.8.5
+FROM python:3.8-alpine
 
 WORKDIR /code
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
+
+RUN apk add --no-cache --virtual .build-geps gcc musl-dev postgresql-dev
 
 RUN pip install --upgrade pip
 
