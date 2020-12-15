@@ -54,7 +54,6 @@ local: dev-local-deps
 	. $(python_path)activate && IS_DEBUG=TRUE DB_HOST=localhost DB_NAME=${DB_NAME} \
 	POSTGRES_USER=${POSTGRES_USER} POSTGRES_PASSWORD=${POSTGRES_PASSWORD} ./server/manage.py runserver
 
-
 makemigrations:
 	docker-compose exec web ./manage.py makemigrations
 
@@ -64,8 +63,3 @@ migrate: makemigrations
 collectstatic:
 	docker-compose exec web ./manage.py collectstatic --noinput
 	docker-compose exec web ./manage.py clear_templates_cache
-
-build-static:
-	docker-compose up --force-recreate frontend
-
-frontend: build-static collectstatic

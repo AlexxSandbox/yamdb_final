@@ -22,7 +22,6 @@ services:
     restart: always
     volumes:
       - static_data:/code/static
-#      - .:/code
     depends_on:
       - db
     env_file:

@@ -47,13 +47,13 @@ Build the new image and spin up the containers:
 ```
 $ sudo docker-compose up -d --build
 ```
-Run the migrations:
+or
 ```
-$ sudo docker container exec -it APIDOCKER python manage.py migrate --noinput
+$ make dev
 ```
 Ensure the default Django tables were created:
 ```
-$ sudo docker container exec -it POSTGRESQLDOCKER psql --username=postgres --dbname=postgres
+$ make exec c=db psql --username=postgres --dbname=postgres
 ```
 ```
 psql (12.0)
@@ -97,14 +97,16 @@ postgres=# \q
 ```
 Create superuser for Django admin:
 ```
-$ sudo docker container exec -it APIDOCKER python manage.py createsuperuser
+$ make exec
+$ python manage.py createsuperuser
+$ ...
 ```
 Ready!
 You can work with API. Run browser and get Token [localhost:8000/api/v1/auth/token](https://localhost:8000/api/v1/auth/token/)
 
 *To delete all containers, volumes and networks run:
 ```
-$ sudo docker-compose down -v
+$ make down
 ```
 
 ## Built With
