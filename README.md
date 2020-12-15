@@ -27,6 +27,22 @@ What things you need to install the software and how to install them
 * [Install Docker-compose](https://docs.docker.com/compose/install/)
 
 ### How it work
+Generate .env file:
+* auto
+```
+$ sudo ./bin/create_enfile.sh
+```
+* manual
+```
+$ touch .env
+
+$ DB_ENGINE=django.db.backends.postgresql
+$ DB_NAME=*\<YOURKEY>\*
+$ POSTGRES_USER=*\<YOUNAME>\*
+$ POSTGRES_PASSWORD=*\<YOURPASSWORD>\*
+$ DB_HOST=db
+$ DB_PORT=5432
+```
 Build the new image and spin up the containers:
 ```
 $ sudo docker-compose up -d --build
