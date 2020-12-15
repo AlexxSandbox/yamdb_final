@@ -1,11 +1,11 @@
-FROM python:3.8
+FROM python:3.8.5
 
 WORKDIR /code
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
 
-RUN apk add --no-cache --virtual .build-geps gcc musl-dev postgresql-dev
+#RUN apk add --no-cache --virtual .build-geps gcc musl-dev postgresql-dev
 
 RUN pip install --upgrade pip
 
