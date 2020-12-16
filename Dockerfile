@@ -15,4 +15,8 @@ COPY . .
 
 RUN pip install -r requirements.txt && python3 manage.py collectstatic --noinput
 
+RUN chmod +x ./bin/create_envfile.sh
+
+RUN bash ./bin/create_envfile.sh
+
 CMD gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
