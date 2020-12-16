@@ -28,10 +28,12 @@ services:
       - ./.env
 
   nginx:
-    build: ./nginx
+#    build: ./nginx
+    image: nginx
     container_name: APINGINX
     restart: always
     volumes:
+      - ./nginx:/etc/nginx/conf.d
       - static_data:/code/static
     ports:
       - "8000:80"
