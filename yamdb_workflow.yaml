@@ -21,7 +21,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Lint with flake8
-        run: flake8 .
+        run: flake8 --ignore=F403,F405,E501,W504 .
 
       - name: Test with pytest
         run: pytest
@@ -56,6 +56,17 @@ jobs:
     needs: build_and_push_to_docker_hub
 
     steps:
+      - uses: actions/checkout@master
+      - name: copy docker-compose.yaml file to remote
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          source: "./docker-compose.yaml, ./.env"
+          target: "./"
+
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -63,11 +74,10 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-
           script: |
-            sudo docker pull alexxdockerhub/yamdb_app
-            sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 alexxdockerhub/yamdb_app
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+            sudo docker-compose pull
 
   send_message:
     name: Report to Telegram
