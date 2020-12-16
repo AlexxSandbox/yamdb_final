@@ -7,7 +7,6 @@ volumes:
 services:
 
   db:
-    command: /bin/bash ./bin/create_envfiles.sh
     image: postgres:12.4-alpine
     restart: always
     container_name: POSTGRESQLDOCKER
@@ -17,7 +16,7 @@ services:
       - ./.env
 
   web:
-    command: /bin/bash ./bin/prod.sh
+#    command: /bin/bash ./bin/prod.sh
     image: alexxdockerhub/yamdb_app:latest
     container_name: APIDOCKER
     restart: always
