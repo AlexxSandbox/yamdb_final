@@ -64,18 +64,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          source: "./docker-compose.yaml"
-          target: "./"
-
-      - uses: actions/checkout@master
-      - name: copy .env file to remote
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          source: "./.env"
+          source: "./docker-compose.yaml", "./.env"
           target: "./"
 
       - name: executing remote ssh commands to deploy
