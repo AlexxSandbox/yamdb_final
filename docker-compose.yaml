@@ -16,7 +16,7 @@ services:
       - ./.env
 
   web:
-#    command: /bin/bash ./bin/prod.sh
+    command: /bin/bash ./bin/prod.sh
     image: alexxdockerhub/yamdb_app:latest
     container_name: APIDOCKER
     restart: always
