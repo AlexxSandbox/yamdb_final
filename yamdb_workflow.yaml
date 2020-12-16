@@ -64,7 +64,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          source: "./docker-compose.yaml, ./.env, ./nginx"
+          source: "./docker-compose.yaml, ./.env"
           target: "./"
 
       - name: executing remote ssh commands to deploy
@@ -78,6 +78,7 @@ jobs:
             sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
             sudo docker-compose pull
+            sudo docker-compose up -d --build
 
   send_message:
     name: Report to Telegram
