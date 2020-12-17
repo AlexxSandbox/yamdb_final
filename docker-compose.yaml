@@ -16,7 +16,6 @@ services:
       - ./.env
 
   web:
-#    command: /bin/bash ./bin/prod.sh
     image: alexxdockerhub/yamdb_app:latest
     container_name: APIDOCKER
     restart: always
@@ -32,8 +31,7 @@ services:
     container_name: APINGINX
     restart: always
     volumes:
-      - ./nginx:/etc/nginx/conf.d
-#      - ./api.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/api.conf:/etc/nginx/conf.d/default.conf
       - static_data:/code/static
     ports:
       - "80:80"
