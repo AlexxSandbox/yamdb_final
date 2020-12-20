@@ -2,6 +2,8 @@ version: '3.8'
 
 volumes:
   postgres_data:
+  static_data:
+  media_data:
 
 services:
   db:
@@ -28,46 +30,7 @@ services:
         - "80:80"
       volumes:
         - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-        - ./static:/code/static
-        - ./media:/code/media
+        - static_data:/code/static/
+        - media_data:/code/media/
       depends_on:
         - web
-
-#version: "3.8"
-#
-#volumes:
-#  postgres_data:
-#
-#services:
-#  db:
-#    image: postgres:13.1
-#    restart: always
-#    container_name: POSTGRESQLDOCKER
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data/
-#    env_file:
-#      - ./.env
-#
-#  web:
-#    build: .
-#    container_name: APIDOCKER
-#    restart: always
-#    expose:
-#      - "8000"
-#    depends_on:
-#      - db
-#    env_file:
-#      - ./.env
-#
-#  nginx:
-#    image: nginx
-#    container_name: APINGINX
-#    restart: always
-#    volumes:
-#      - ./nginx/dafault.conf:/etc/nginx/conf.d/default.conf
-#      - ./static:/yamdb/static/
-#      - ./media:/yamdb/media/
-#    ports:
-#      - "80:80"
-#    depends_on:
-#      - web
