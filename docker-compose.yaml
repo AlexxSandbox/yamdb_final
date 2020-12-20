@@ -17,6 +17,7 @@ services:
     image: alexxdockerhub/yamdb_app:latest
     container_name: APIDOCKER
     restart: always
+    command: /bin/bash ./bin/dev.sh
     volumes:
       - static_data:/code/static
       - media_data:/code/media
