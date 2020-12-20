@@ -43,22 +43,11 @@ exec: set-container
 log: set-container
 	docker-compose logs -f ${c}
 
-
-#run server local
-dev-local-deps:
-	docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d --force-recreate db nginx
-
-python_path = server/venv/bin/
-local: dev-local-deps
-	$(eval $(call use-env))
-	. $(python_path)activate && IS_DEBUG=TRUE DB_HOST=localhost DB_NAME=${DB_NAME} \
-	POSTGRES_USER=${POSTGRES_USER} POSTGRES_PASSWORD=${POSTGRES_PASSWORD} ./server/manage.py runserver
-
 makemigrations:
-	docker-compose exec web ./manage.py makemigrations
+	docker-compose exec web python manage.py makemigrations
 
 migrate: makemigrations
-	docker-compose exec web ./manage.py migrate
+	docker-compose exec web python manage.py migrate
 
 collectstatic:
 	docker-compose exec web ./manage.py collectstatic --noinput

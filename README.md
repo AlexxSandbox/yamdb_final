@@ -37,8 +37,8 @@ $ sudo ./bin/create_enfile.sh
 $ touch .env
 
 $ DB_ENGINE=django.db.backends.postgresql
-$ DB_NAME=*\<YOURKEY>\*
-$ POSTGRES_USER=*\<YOUNAME>\*
+$ DB_NAME=*\<YOURDB>\*
+$ POSTGRES_USER=*\<YOURNAME>\*
 $ POSTGRES_PASSWORD=*\<YOURPASSWORD>\*
 $ DB_HOST=db
 $ DB_PORT=5432
@@ -51,9 +51,19 @@ or
 ```
 $ make dev
 ```
+Create migrations:
+```
+$ make makemigrations
+```
+```
+$ make migrate
+```
 Ensure the default Django tables were created:
 ```
 $ make exec c=db psql --username=postgres --dbname=postgres
+```
+```
+# psql --username=postgres --dbname=postgres
 ```
 ```
 psql (12.0)
@@ -102,9 +112,9 @@ $ python manage.py createsuperuser
 $ ...
 ```
 Ready!
-You can work with API. Run browser and get Token [localhost:8000/api/v1/auth/token](https://localhost:8000/api/v1/auth/token/)
+You can work with API. Run browser and get Token [localhost/api/v1/auth/token](https://localhost:8000/api/v1/auth/token/)
 
-*To delete all containers, volumes and networks run:
+*To stop and remove containers, networks run:
 ```
 $ make down
 ```
