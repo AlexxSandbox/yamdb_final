@@ -62,7 +62,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "./docker-compose.yaml"
           target: "./yamdb/"
@@ -78,7 +78,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "./.env"
           target: "./yamdb/"
@@ -94,7 +94,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "./nginx/default.conf"
           target: "./yamdb/"
