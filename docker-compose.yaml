@@ -18,9 +18,9 @@ services:
     container_name: APIDOCKER
     restart: always
     command: /bin/bash ./bin/dev.sh
-    volumes:
-      - static_data:/code/static
-      - media_data:/code/media
+#    volumes:
+#      - static_data:/code/static
+#      - media_data:/code/media
     expose:
       - "8000"
     depends_on:
@@ -34,7 +34,9 @@ services:
         - "80:80"
       volumes:
         - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-        - static_data:/code/static
-        - media_data:/code/media
+#        - static_data:/code/static
+#        - media_data:/code/media
+        - ./static:/code/static
+        - ./media:/code/media
       depends_on:
         - web
