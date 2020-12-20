@@ -17,6 +17,3 @@ __pycache__/
 *.sublime-workspace
 
 db.sqlite3
-
-static/admin
-static/rest_framework
