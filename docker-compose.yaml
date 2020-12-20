@@ -5,13 +5,15 @@ volumes:
 
 services:
   db:
-    image: postgres:13.1
+    image: postgres:12.4-alpine
+    container_name: POSTGRESQLDOCKER
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
   web:
-    build: .
+    image: alexxdockerhub/yamdb_app:latest
+    container_name: APIDOCKER
     restart: always
     expose:
       - "8000"
@@ -20,7 +22,8 @@ services:
     env_file:
       - ./.env
   nginx:
-      image: nginx:1.19.3
+      image: nginx
+      container_name: APINGINX
       ports:
         - "80:80"
       volumes:
