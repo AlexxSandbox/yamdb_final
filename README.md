@@ -157,4 +157,4 @@ Latest versions available, see the [GitHub](https://github.com/AlexxSandbox/yamd
 
 ## Acknowledgments
 
-* Friends, searching in google and docs
+* Friends, searching in google and docs.
