@@ -21,14 +21,12 @@ services:
     volumes:
       - static_data:/code/static
       - media_data:/code/media
-    expose:
-      - "8000"
     depends_on:
       - db
     env_file:
       - ./.env
   nginx:
-      image: nginx
+      image: nginx:1.19.3
       container_name: APINGINX
       ports:
         - "80:80"
