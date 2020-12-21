@@ -81,10 +81,8 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             docker pull alexxdockerhub/yamdb_app:latest
-#            docker-compose -f ~/yamdb/docker-compose.yaml down -v
             docker-compose down -v
             docker image prune -a
-#            docker-compose -f ~/yamdb/docker-compose.yaml up -d
             docker-compose up -d
 
   send_message:
