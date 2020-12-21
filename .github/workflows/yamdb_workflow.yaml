@@ -80,8 +80,9 @@ jobs:
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            docker pull alexxdockerhub/yamdb_app:latest
             docker-compose -f ~/yamdb/docker-compose.yaml down -v
-            sudo docker pull alexxdockerhub/yamdb_app:latest
+            docker image prune -a
             docker-compose -f ~/yamdb/docker-compose.yaml up -d
 
   send_message:
